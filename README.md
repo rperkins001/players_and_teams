@@ -64,9 +64,10 @@ This is a simple Django web application that tracks information on sports teams 
 8. Access the application at `http://localhost:8000` or your configured IP address and port.
 
 
-# File System Diagram:
 
-- .
+## File System Diagram:
+
+- players_and_teams
     - Dockerfile
     - db.sqlite3
     - docker-compose.yml
