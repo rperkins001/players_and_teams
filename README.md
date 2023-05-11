@@ -9,6 +9,51 @@ This is a simple Django web application that tracks information on sports teams 
 - Assign Players to multiple Teams
 - Dockerized setup for easy deployment
 
+## File System Diagram:
+
+- players_and_teams
+    - Dockerfile
+    - db.sqlite3
+    - docker-compose.yml
+    - manage.py
+    - myenv
+        - bin
+        - include
+        - lib
+        - pyvenv.cfg
+    - players_and_teams
+        - __init__.py
+        - asgi.py
+        - settings.py
+        - urls.py
+        - wsgi.py
+    - requirements.txt
+    - static
+        - admin
+        - favicon.ico
+        - img
+    - staticfiles
+        - admin
+        - favicon.ico
+        - img
+    - team_tracker
+        - __init__.py
+        - admin.py
+        - apps.py
+        - context_processors.py
+        - forms.py
+        - migrations
+        - models.py
+        - tests.py
+        - urls.py
+        - views.py
+    - templates
+        - base.html
+        - home.html
+        - login.html
+        - players
+        - team
+
 ## Prerequisites
 
 - Python 3.7 or higher
@@ -65,47 +110,4 @@ This is a simple Django web application that tracks information on sports teams 
 
 
 
-## File System Diagram:
 
-- players_and_teams
-    - Dockerfile
-    - db.sqlite3
-    - docker-compose.yml
-    - manage.py
-    - myenv
-        - bin
-        - include
-        - lib
-        - pyvenv.cfg
-    - players_and_teams
-        - __init__.py
-        - asgi.py
-        - settings.py
-        - urls.py
-        - wsgi.py
-    - requirements.txt
-    - static
-        - admin
-        - favicon.ico
-        - img
-    - staticfiles
-        - admin
-        - favicon.ico
-        - img
-    - team_tracker
-        - __init__.py
-        - admin.py
-        - apps.py
-        - context_processors.py
-        - forms.py
-        - migrations
-        - models.py
-        - tests.py
-        - urls.py
-        - views.py
-    - templates
-        - base.html
-        - home.html
-        - login.html
-        - players
-        - team
