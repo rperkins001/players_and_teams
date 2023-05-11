@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ team.city }} {{ team.mascot }}</h2>
+    <h3>Players</h3>
+    {% if players %}
+        <ul>
+            {% for player in players %}
+                <li>
+                    {{ player.first_name }} {{ player.last_name }}
+                    
+                    <a href="{% url 'player_delete' team.id player.id %}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No players on this team.</p>
+    {% endif %}
+    <a href="{% url 'player_create' team.id %}">Create Player</a>
+    <br>
+    <a href="{% url 'team_delete' team.id %}">Delete Team</a>
+    <br>
+    <a href="{% url 'home' %}">Back to Main Page</a>
+
+{% endblock %}

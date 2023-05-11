@@ -1,0 +1,6 @@
+Django
+psycopg2
+docker
+docker-compose
+django-ipware
+
