@@ -12,37 +12,35 @@ class TeamModelTest(TestCase):
         self.player1 = Player.objects.create(first_name="John", last_name="Doe")
         self.player1.teams.add(self.team1)
     
-
     def test_player_creation(self):
         self.assertEqual(self.player1.first_name, "John")
         self.assertEqual(self.player1.last_name, "Doe")
         self.assertEqual(self.player1.teams.first(), self.team1)
 
-
 class PlayerModelTest(TestCase):
 
     def setUp(self):
-        # Create a team
-        self.team = Team.objects.create(city="New York", mascot="Yankees")
-
-        # Create a player
-        self.player = Player(first_name="John", last_name="Doe")
-        self.player.team = self.team  # Temporarily store team
-        self.player.save()  
+        self.team = Team.objects.create(city="Seattle", mascot="Seahawks")
+        self.player = Player.objects.create(first_name="John", last_name="Doe")
+        self.player.teams.add(self.team)
+        self.player.refresh_from_db()
 
     def test_player_creation(self):
-        player = Player.objects.get(id=1)
-        self.assertEqual(player.first_name, "John")
-        self.assertEqual(player.last_name, "Doe")
+        self.assertEqual(self.player.first_name, "John")
+        self.assertEqual(self.player.last_name, "Doe")
+        self.assertEqual(self.player.teams.first(), self.team)
 
     def test_player_assigned_to_team(self):
-        player = Player.objects.get(id=1)
-        team = Team.objects.get(id=1)
-        self.assertTrue(player.teams.filter(id=team.id).exists())
-
+        self.assertTrue(self.player.teams.filter(id=self.team.id).exists())
 
 # Test for views
 class HomePageViewTest(TestCase):
+
+    def setUp(self):
+        # Create a user and log them in
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.client.login(username='testuser', password='12345')
+
     def test_view_url_exists_at_proper_location(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
